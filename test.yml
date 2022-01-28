@@ -1,3 +1,4 @@
+# Examples of the yml syntax used when writing workflows
 name: Matt
 age: 38
 address: "street: 12345 street st."
@@ -26,7 +27,7 @@ objectsArray:
     key2: value
   - key: value
     key2: value
-longText: >
+longText: |
   wscjbhkjcbwjkcbnw cwjkcnwkjcnwcjkw
   wcnwcjkwcnwkjc wcjwcnwclkw
   ncwlc cwkjcnwjkcnwcjkwncj cdddddddd

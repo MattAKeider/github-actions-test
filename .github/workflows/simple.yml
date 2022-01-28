@@ -1,10 +1,13 @@
+# Name of your workflow
 name: Shell Commands
-
+# Type of event which will trigger the workflow. Ex: push new code to branch
 on: [push]
-
+# Could have multiple jobs. Ex: run-shell-command and run-windows-commands
 jobs:
   run-shell-command:
+    # Environment used for that job
     runs-on: ubuntu-latest
+    # Array of steps. Use the '-' for each item in array
     steps:
       - name: echo a string
         run: echo "Hello World!"
@@ -13,12 +16,15 @@ jobs:
           node -v
           npm -v
       - name: python Command
+        # multiline script with '|'
         run: |
           import platform
           print(platform.processor())
+        # Switch to another shell
         shell: python
   run-windows-commands:
     runs-on: windows-latest
+    # Wait for other job to finish before running this job
     needs: ["run-shell-command"]
     steps:
       - name: Directory Powershell

@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: List Files
+        # print to console the GitHub environment variables to use later
         run: |
           pwd
           ls -a
@@ -15,15 +16,18 @@ jobs:
           echo $GITHUB_WORKSPACE
           echo "${{ github.token }}"
       - name: Checkout
+        # Available GitHub Action to use. This action checks-out your repository under $GITHUB_WORKSPACE, so your workflow can access it.
         uses: actions/checkout@v1
       - name: List Files After Checkout
         run: |
           pwd
           ls -a
       - name: Simple JS Actions
+        # Use an id to be able to referance this individual step later
         id: greet
         uses: actions/hello-world-javascript-action@v1
         with:
           who-to-greet: Matt
       - name: Log Greeting Time
+        # Use "${{}}" to referance previous values from workflows
         run: echo "${{ steps.greet.outputs.time }}" 
