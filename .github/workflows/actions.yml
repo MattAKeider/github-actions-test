@@ -4,7 +4,9 @@ name: Actions Workflow
 
 # Use as an object to add types of an event
 on: 
-  push:
+ # push:
+  schedule:
+    - cron: 11 14 * * *
   pull_request:
     types: [closed, assigned, opened, reopened]
 

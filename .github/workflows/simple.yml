@@ -1,7 +1,8 @@
 # Name of your workflow
 name: Shell Commands
 # Type of event which will trigger the workflow. Ex: push new code to branch
-on: [push]
+# on: [push]
+on: [pull_request]
 # Could have multiple jobs. Ex: run-shell-command and run-windows-commands
 jobs:
   run-shell-command:
