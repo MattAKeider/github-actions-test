@@ -4,11 +4,27 @@ name: Actions Workflow
 
 # Use as an object to add types of an event
 on: 
-  # push:
+  push:
+    branches:
+      - master
+      - 'feature/*'
+      - '!pr/*' # the '!' ignores a branch
+    tags:
+      - v1.*
+    paths:
+      - '**.js' # Only run workflow when certain file types are pushed
+      - '!filename.js' # Don't run on this file
+
   # schedule:
   #  - cron: "18 19 * * *"
-  pull_request:
-    types: [closed, assigned, opened, reopened]
+
+  # Use repository_dispatch to trigger on Post resquests to kick a build off from external source!
+  # repository_dispatch:
+  #  types: [build]
+
+  # push:
+  # pull_request:
+  #  types: [closed, assigned, opened, reopened]
 
 jobs:
   run-github-actions:
