@@ -13,12 +13,13 @@ jobs:
           echo ${{ format( 'Hello {0} {1} {2}', 'World', '!', '!' ) }}
   one:
     runs-on: ubuntu-latest
+    # Only run this job if event is push. Conditionally run a job!!
     if: github.event_name == 'push'
     steps:
-     # - name: Dump GitHub context
-      #  env:
-      #    GITHUB_CONTEXT: ${{ toJson(github) }}
-      #  run: eccho "$GITHUB_CONTEXT"
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
       - name: Dump job context
         if: failure()
         env:
