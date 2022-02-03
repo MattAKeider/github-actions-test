@@ -1,0 +1,8 @@
+name: Matrix
+on: push
+
+jobs:
+  node_version:
+    steps:
+      - name: Log Node Version
+        run: node -v
