@@ -1,5 +1,5 @@
 name: Matrix
-on: push
+on: pull_request
 
 jobs:
   node_version:
@@ -7,11 +7,12 @@ jobs:
       matrix:
         os: [macos-latest, ubuntu-latest, windows-latest]
         node-version: [6, 8, 10]
-        # exclude & include node versions for certain os in the matrix
+        # add extra environment variable 'is_ubuntu_8' set to true to job when ubuntu-latest, node 8 is ran!! 
         include:
           - os: ubuntu-latest
             node-version: 8
             is_ubuntu_8: "true"
+        # exclude node versions for certain os in the matrix
         exclude:
           - os: ubuntu-latest
             node-version: 6
@@ -34,6 +35,7 @@ jobs:
         with:
           node-version: ${{ matrix.node_version }}
       - name: Log Node Version
+        # log this variable IS_UBUNTU_8 if variable added to job
         run: | 
           node -v
           echo $IS_UBUNTU_8
